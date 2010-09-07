@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.1/build/yahoo-dom-event/yahoo-dom-event.js&2.8.1/build/datasource/datasource-
+min.js"></script>
+<meta charset=utf-8  content=""/>
+<title>Add preFix</title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+  /*
+  #3BB9FF - Deep Sky Blue
+  #38ACEC - Deep Sky Blue2
+        #87ceeb - Sky Blue
+  #87cefa - light Skye blue;
+        clear: both; - No Floating Element allowed on left or right                                     1
+
+  */
+  .preFixDivElement {
+    border: 1px solid #87cefa;
+    padding: 1px 0 1px 0;
+    border-width:1px;
+    border-style: inset;
+    width: 17em ! important;
+  }
+
+  .applyWidth {
+    width: 20em ! important;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<br />
+<br />
+<br />
+<br />
+
+<div id="divElement" class="preFixDivElement">Enter Value</div>
+<input type="text" name="SourceOpenGauge" id="inputElement" class="hide applyWidth" />
+
+<script>
+
+  var inputelement = YAHOO.util.Dom.get('inputElement');
+  var divelement   = YAHOO.util.Dom.get('divElement');
+
+var addPrefix123121 = function(UOM, newNumber) {
+    return YAHOO.util.Number.format(newNumber, {
+        suffix: UOM,
+      decimalPlaces : 3
+    });
+};
+
+var locale = "us-en";
+var cellConfig = {
+        uom: "LB",
+        format: "00.0000",
+        dataType: "Float"
+};
+
+var addPrefix = function(UOM, newNumber, oldValue) {
+    var oConfig = addPrefixSetting(cellConfig);
+    return YAHOO.util.Number.format(newNumber, oConfig);
+};
+
+function addPrefixSetting(cellConfig) {
+        var settings = {};
+        var oConfig = checkFormatValue(cellConfig);
+        settings.suffix = cellConfig.uom;
+    if(cellConfig.dataType === "Integer") {
+       // TODO
+    }else if(cellConfig.dataType === "Float"){
+        settings.decimalPlaces      = oConfig["decimalPlaces"];
+        settings.decimalSeparator   = oConfig["decimalSeparator"];
+        settings.thousandsSeparator = oConfig["thousandsSeparator"];
+    }
+   return settings;
+}
+
+function checkFormatValue(cellConfig) {
+    //findLocale();
+    var oConfig = [], formatStr;
+    switch(locale) {
+        case "us-en":
+                formatStr = (cellConfig.format != '')?cellConfig.format:"00.0000"
+                    oConfig["decimalPlaces"] = formatStr.split(".")[1].length;
+                    oConfig["decimalSeparator"] = ".";
+                    oConfig["thousandsSeparator"] = ",";
+                   break;
+        case "fr":
+                formatStr = (cellConfig.format != '')?cellConfig.format:"00,0000"
+                    oConfig["decimalPlaces"] = formatStr.split(",")[1].length;
+                    oConfig["decimalSeparator"] = ",";
+                    oConfig["thousandsSeparator"] = ".";
+                   break;
+        default :
+                   break;
+    }
+
+    return oConfig;
+}
+
+
+
+var AddPrefixLogic = {
+  inputElement: inputelement,
+  divElement: divelement,
+  onClick: function () {
+      this.inputElement.value = convertNumberToRegion(this.inputElement.value)
+    YAHOO.util.Dom.removeClass(this.divElement, 'show');
+    YAHOO.util.Dom.removeClass(this.inputElement, 'hide');
+    YAHOO.util.Dom.addClass(this.divElement, 'hide');
+    YAHOO.util.Dom.addClass(this.inputElement, 'show');
+    this.inputElement.focus();
+  },
+  onBlur: function() {
+
+    YAHOO.util.Dom.removeClass(this.inputElement, 'show');
+    YAHOO.util.Dom.addClass(this.inputElement, 'hide');
+    YAHOO.util.Dom.removeClass(this.divElement, 'hide');
+    YAHOO.util.Dom.addClass(this.divElement, 'show');
+    this.divElement.innerHTML = startPreProcess(' LB', this.inputElement.value);
+  }
+};
+
+
+function bind(fn, scope) {
+  return function () {
+    return fn.apply(scope, arguments);
+  }
+}
+
+AddPrefixLogic.onClick = bind(AddPrefixLogic.onClick, AddPrefixLogic);
+AddPrefixLogic.onBlur = bind(AddPrefixLogic.onBlur, AddPrefixLogic);
+YAHOO.util.Event.addListener(divelement, "click", AddPrefixLogic.onClick);
+YAHOO.util.Event.addListener(inputelement, "blur", AddPrefixLogic.onBlur);
+
+var convertNumberToRegion = function(newNumber) {
+    if(newNumber != '') {
+      if(locale === 'fr'){
+          newNumber = newNumber.replace('.',',');
+      }else if(locale === 'us-en') {
+          newNumber = newNumber.replace(',','');
+      }
+    }
+    return newNumber;
+};
+
+var startPreProcess = function(uom, newNumber) {
+    if(locale === 'fr'){
+        newNumber = newNumber.replace('.','');
+        newNumber = newNumber.replace(',','.');
+    }else if(locale === 'us-en') {
+        newNumber= newNumber.replace(',','');
+    }
+    return newNumber;
+};
+
+(function(){
+  var oldInterestingFunction = startPreProcess;
+  startPreProcess = function() {
+    // perform any "before" logic
+      
+    try {
+      var modifiedValue = oldInterestingFunction.apply(this, arguments),
+              uom = arguments[0],
+              oldValue = arguments[1];
+      // perform any "after" logic
+      var result = addPrefix(uom, modifiedValue, oldValue);
+        inputelement.value = modifiedValue;
+    } catch(err) {
+      // perform any "error" logic
+      throw err;
+    }
+    return result;
+  };
+})();
+
+
+       
+</script>
+
+</body>
+</html>
