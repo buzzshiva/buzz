@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.2r1/build/fonts/fonts-min.css" />
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.2r1/build/datatable/assets/skins/sam/datatable.css" />
+<script class="test" src="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/yuiloader/yuiloader-min.js"></script>
+
+<!--Use YUI Loader to bring in your other dependencies: -->
+<script type="text/javascript">
+// Instantiate and configure YUI Loader:
+(function() {
+
+	var buzzshivaJSLoader = new YAHOO.util.YUILoader({
+		base: 'js/',
+		onSuccess: function () {
+
+		}
+	});
+
+	buzzshivaJSLoader.addModule({
+		name: 'displayDataOnTable',
+		type: 'js',
+		path: 'displayDataOnTable.js',
+		varName: 'displayDataOnTable'
+	});
+
+    var loader = new YAHOO.util.YUILoader({
+        base: "",
+        require: ["event","dom","element","datasource","datatable","dragdrop"],
+        loadOptional: false,
+        combine: true,
+        filter: "MIN",
+        allowRollup: true,
+        onSuccess: function() {
+            //you can make use of all requested YUI modules
+            //here.
+            YAHOO.util.Dom;
+            var util 	= YAHOO.util,
+            	Dom 	= util.Dom,
+            	Event 	= util.Event,
+            	valueEl = Dom.get('valueElem'),
+            	regEx 	= Dom.get('regExElem');
+
+
+            Event.addListener("exeTestCase","click", function() {
+					var value = valueEl.value,
+						regExValue = regEx.value,
+						tmpObj = {};
+
+					if(value) {
+            			tmpObj.value = valueEl.value;
+            			if(regExValue) {
+            				tmpObj.regex = regEx.value;
+            			}else {
+							tmpObj.regex = '';
+            			}
+            		}
+            		tmpObj.fnToExecute = validateRegEx;
+
+					arrTestCases.push(tmpObj);
+
+            		var txtMsg = runTestCase(arrTestCases);
+            		addElement(txtMsg);
+            	},this, true
+            );
+
+            Event.addListener(window, "load", function() {
+				// alert("asdsad");
+			});
+
+			buzzshivaJSLoader.require(["displayDataOnTable"]);
+			buzzshivaJSLoader.insert();
+
+        }
+    });
+
+// Load the files using the insert() method.
+loader.insert();
+})();
+</script>
+<script src="js/addUtil.js"></script>
+<script src="js/regExTestCase.js"></script>
+<meta charset=utf-8 />
+<title>Test case Run... Regex</title>
+	<!--[if IE]>
+	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+<style>
+  article, aside, figure, footer, header, hgroup,
+  menu, nav, section { display: block; }
+  .applyGrayTxt {color:grayText}
+</style>
+
+</head>
+<body class="yui-skin-sam">
+	  <p id="testCaseSample">Test case	</p>
+
+	  <div id="container">
+	  	<ul>
+	  		<li id="item-1"><em>Enter Values to add into main Object :</em>	<input id="valueElem" value="Enter Value" class="applyGrayTxt" /></li>
+	  		<li id="item-2"><em>Enter RegEx for Evaluation :</em>  <input id="regExElem" value="Enter RegEx" class="applyGrayTxt" /></li>
+	  	</ul>
+	  </div>
+	  <input type="hidden" value="0" id="theValue" />
+<p>
+	<button id="exeTestCase" >Execute Test Cases</button>
+</p>
+<div id="polling"></div>
+
+<div id="myDiv"> </div>
+
+</body>
+</html>
