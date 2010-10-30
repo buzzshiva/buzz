@@ -89,7 +89,8 @@ loader.insert();
 <style>
   article, aside, figure, footer, header, hgroup,
   menu, nav, section { display: block; }
-  .applyGrayTxt {color:grayText}
+  .applyGrayTxt {color:grayText;}
+  .wordWrap { word-wrap: break-word }
 </style>
 
 </head>
@@ -98,17 +99,25 @@ loader.insert();
 
 	  <div id="container">
 	  	<ul>
-	  		<li id="item-1"><em>Enter Values to add into main Object :</em>	<input id="valueElem" value="Enter Value" class="applyGrayTxt" /></li>
-	  		<li id="item-2"><em>Enter RegEx for Evaluation :</em>  <input id="regExElem" value="Enter RegEx" class="applyGrayTxt" /></li>
-	  	</ul>
+	  		<li id="item-1" >
+				<em class="wordWrap">Enter Values to add into main Object :</em>	
+				<input id="valueElem" value="Enter Value" class="applyGrayTxt" />
+			</li>
+	  		<li id="item-2">
+			<em>Enter RegEx for Evaluation :</em>  
+				<textarea rows="2" cols="20" id="regExElem" value="Enter RegEx" class="applyGrayTxt" ></textarea> 
+			</li>
+	  		<li id="item-2"><em>Automate Test Case :</em>  
+				<input id="regExElem_new" value="Enter RegEx" class="applyGrayTxt" />
+				<button id="automateTestcase" >Auto Mate TestCase</button>
+			</li>
+		</ul>
 	  </div>
 	  <input type="hidden" value="0" id="theValue" />
-<p>
-	<button id="exeTestCase" >Execute Test Cases</button>
-</p>
+		<p>
+			<button id="exeTestCase" >Execute Test Cases</button>
+		</p>
 <div id="polling"></div>
-
 <div id="myDiv"> </div>
-
 </body>
 </html>

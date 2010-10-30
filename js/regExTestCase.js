@@ -39,16 +39,12 @@ function runTestCase(arrTestObject) {
     for(arr in arrTestObject) {
       if(arrTestObject.hasOwnProperty(arr)) {
         fn = arrTestObject[arr].fnToExecute;
-	value = arrTestObject[arr].value;
-	regex = arrTestObject[arr].regex;
-	//if(typeof(console) != "undefined") {
+		value = arrTestObject[arr].value;
+		regex = arrTestObject[arr].regex;
 		status = fn(value, regex);	
 		txtMsg[testcase] = "Executing Testcase...#"+ (testcase+1) + " for value : "+value + " Status :"+status +"<br/>";              
-	//}
-	// console.log(txtMsg[testcase]);
-	testcase++;
+		testcase++;
       }
-     
     }
     
     return txtMsg.concat().join(" ");
