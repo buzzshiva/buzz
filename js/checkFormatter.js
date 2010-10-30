@@ -53,3 +53,19 @@ function checkFormatValue(cellConfig) {
 
     return oConfig;
 }
+
+
+(function(){
+  var oldInterestingFunction = someInterestingFunction;
+  someInterestingFunction = function() {
+    // perform any "before" logic
+    try {
+      var result = oldInterestingFunction.apply(this, arguments);
+      // perform any "after" logic
+    } catch(err) {
+      // perform any "error" logic
+      throw err;
+    }
+    return result;
+  };
+})();
