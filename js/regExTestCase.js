@@ -29,7 +29,7 @@ var arrTestCases;
                    {"value":"123","regex":"","fnToExecute":validateRegEx},
                    {"value":"123,123","regex":/^(\d{1,3},(\d{3},)*\d{3}(\.\d{1,3})?|\d{1,3}(\.\d{3})?)$/,"fnToExecute":validateRegEx},
                    {"value":"12345","regex":"","fnToExecute":validateRegEx},
-                   {"value":"1234,123","regex":"","fnToExecute":validateRegEx}
+                   {"value":"1234,123","regex":/^(\d{1,3}.(\d{3}.)*\d{3}(\,\d{1,3})?|\d{1,3}(\,\d{3})?)$/;,"fnToExecute":validateRegEx}
                   ];
 	
 
