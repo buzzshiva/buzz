@@ -225,7 +225,9 @@ YUI({
   		  	var q2 = new Y.yql('select * from weather.forecast where location='+_location);
     			q2.on('query', function(r) {
         		if (r.results) {
-            		var el = Y.Node.create('<div class="mod"></div>');
+            		if(!el) {
+            			var el = Y.Node.create('<div class="mod"></div>');
+            		}	
             		el.set('innerHTML', r.results.channel.description + '<h2>Weather for ' + _location + ' </h2>' + r.results.channel.item.description);
             		res.appendChild(el);
         			}
