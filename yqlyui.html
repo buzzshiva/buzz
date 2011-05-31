@@ -191,6 +191,15 @@ YUI({
     </div>
     <div id="ft">&nbsp;</div>
 </div>
+			<form id="wForm">
+				<fieldset>
+					<label>Zip Code or Location ID</label> <input type="text" id="zip" value="94089">
+					<p>Please enter a U.S. Zip Code or a location ID to get the current temperature.  The default is Zip Code 94089 for Sunnyvale, California; its location ID is: USCA1116.</p>
+				</fieldset>
+					<input type="button" value="Get Weather RSS" id="getWeather">
+			</form>
+
+
 <script src="http://developer.yahoo.com/yui/assets/dpSyntaxHighlighter.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/combo?3.0.0b1/build/yui/yui-min.js"></script>
 <script type="text/javascript" src="http://github.com/davglass/yui-yql/raw/master/yql-min.js"></script>
@@ -213,22 +222,12 @@ YUI({
 		//object in its second argument:
 		function successHandler(_location){
 		    var _location=_location?_location:94583;
-			var _formEl = '<form id="wForm">
-				<fieldset>
-					<label>Zip Code or Location ID</label> <input type="text" id="zip" value="94089">
-					<p>Please enter a U.S. Zip Code or a location ID to get the current temperature.  The default is Zip Code 94089 for Sunnyvale, California; its location ID is: USCA1116.</p>
-				</fieldset>
-					<input type="button" value="Get Weather RSS" id="getWeather">
-			</form>';
-		    
-		    
-		    
 			if(_location) { 
   		  	var q2 = new Y.yql('select * from weather.forecast where location='+_location);
     			q2.on('query', function(r) {
         		if (r.results) {
             		if(!el) {
-            			var el = Y.Node.create('<div class="mod"></div>' + _formEl);
+            			var el = Y.Node.create('<div class="mod"></div>');
             		}	
             		el.set('innerHTML', r.results.channel.description + '<h2>Weather for ' + _location + ' </h2>' + r.results.channel.item.description);
             		res.appendChild(el);
