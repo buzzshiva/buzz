@@ -234,14 +234,11 @@ YUI({
     			});
 		    } // end of if condition	
 		}
-
+		
+		var iZip = Y.one('#zip').get('value');
 		//When the Get RSS button is clicked, this function will fire
 		//and compose/dispatch the IO request:
 		function getModule(){
-			//Get the input value:
-			var iZip = Y.one('#zip');
-			debugger;	
-			console.log(iZip);
 			successHandler(iZip);
 		}
 
