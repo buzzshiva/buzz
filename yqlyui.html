@@ -220,11 +220,11 @@ YUI({
     });
     
 
-    var q2 = new Y.yql('select * from weather.forecast where location=90210');
+    var q2 = new Y.yql('select * from weather.forecast where location=94583');
     q2.on('query', function(r) {
         if (r.results) {
             var el = Y.Node.create('<div class="mod"></div>');
-            el.set('innerHTML', '<h2>Weather for 90210</h2>' + r.results.channel.item.description);
+            el.set('innerHTML', '<h2>Weather for 94583</h2>' + r.results.channel.item.description);
             res.appendChild(el);
         }
     });
