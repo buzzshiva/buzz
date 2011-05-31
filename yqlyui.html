@@ -219,15 +219,17 @@ YUI({
         }
     });
     
-
-    var q2 = new Y.yql('select * from weather.forecast where location=33647');
-    q2.on('query', function(r) {
-        if (r.results) {
-            var el = Y.Node.create('<div class="mod"></div>');
-            el.set('innerHTML', r.results.channel.description + '<h2>Weather for 33647</h2>' + r.results.channel.item.description);
-            res.appendChild(el);
-        }
-    });
+    var _location=33647;
+	if(_location) { 
+  		  var q2 = new Y.yql('select * from weather.forecast where location='+_location);
+    		q2.on('query', function(r) {
+        	if (r.results) {
+            	var el = Y.Node.create('<div class="mod"></div>');
+            	el.set('innerHTML', r.results.channel.description + '<h2>Weather for 33647</h2>' + r.results.channel.item.description);
+            	res.appendChild(el);
+        	}
+    	});
+    } // end of if condition	
 
     var q3 = new Y.yql('select * from twitter.user.timeline where (id = "davglass")', function(r) {
         if (r.query.results) {
