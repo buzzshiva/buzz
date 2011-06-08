@@ -1,0 +1,13 @@
+<html>
+<head><title>Demo of VLC mozilla plugin</title></head>
+<body>
+<embed type="application/x-vlc-plugin"
+         name="video2"
+         autoplay="no" loop="no" hidden="yes"
+         target="rtp://@183.82.202.240:5004" />
+<br />
+  <a href="javascript:;" onclick='document.video2.play()'>Play video2</a>
+  <a href="javascript:;" onclick='document.video2.stop()'>Stop video2</a>
+  <a href="javascript:;" onclick='document.video2.fullscreen()'>Fullscreen</a>
+</body>
+</html>
