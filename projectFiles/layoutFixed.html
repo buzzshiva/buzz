@@ -6,52 +6,54 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset.css" type="text/css"> 
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts.css" type="text/css"> 
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssgrids/grids.css" type="text/css"> 
+ 	<link rel="stylesheet" href="css/main.css" type="text/css" />
  	<script type="text/javascript" src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"></script> 
-    <link rel="stylesheet" href="css/main.css" type="text/css" /> 
+	<script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js" type="text/javascript"></script>
 </head> 
-<body id="doc" class="yui3-skin-sam"> 
+<body id="doc" class="yui3-skin-sam yui-skin-sam"> 
     <div id="hd" class="yui3-g">
     	<div id="headeraL" class="yui3-u-5-12">
 			<h1>Fixed Layout Template</h1> 
 		</div>
-		
-		<div id="dropdown" class="yui3-u-5-12">
-		      	<label for="ac-input">Search Technical Episode:</label>
-				<input id="ac-input" type="text"  />
-		      	<script>
-				YUI().use("autocomplete", "autocomplete-highlighters", function (Y) {
-				  Y.one('#ac-input').plug(Y.Plugin.AutoComplete, {
-				    resultHighlighter: 'phraseMatch',
-				    source: 'select * from search.suggest where query="{query}"',
-				    yqlEnv: 'http://pieisgood.org/yql/tables.env'
-				  });
-				});
-				</script>
+		<div id="dropdown" class="yui3-u">
 		</div>
-		
 		<div id="headeraR">
 			<div id="searchArea" class="yui3-u">
-				<!-- ul class="srchOptns">
-					<li class="first"><strong>YDN Site</strong></li>
-					<li>Code</li>
-					<li>Web</li>
-				</ul -->
 				<div class="srchFld">
 					<form action="" method="get">
-						<div id="sitesearch">
-							<input type="text" name="va" value="" id="searchinput">
-							<input type="hidden" name="vs" value="developer.yahoo.com">
-							<input type="hidden" name="vs" value="yuiblog.com">
-							<input type="submit" name="sub" value="Search" id="searchsubmit" class="ygbt">
-						</div>
+				      	<label for="ac-input">Search Technical Episode:</label>
+						<input id="ac-input" type="text"  />
+						<input type="submit" name="sub" value="Search" id="searchsubmit" class="ygbt">
+				      	<script>
+							YUI().use("autocomplete", "autocomplete-highlighters", function (Y) {
+							  Y.one('#ac-input').plug(Y.Plugin.AutoComplete, {
+							    resultHighlighter: 'phraseMatch',
+							    source: 'select * from search.suggest where query="{query}"',
+							    yqlEnv: 'http://pieisgood.org/yql/tables.env'
+							  });
+							});
+						</script>
 					</form>
 				</div>
 			</div>
 		</div> 
-        
+
     </div> 
     <div class="yui3-g"> 
-            <div class="content"></div> 
+            <div class="content">
+            <!-- div id="flashContainer" style="width:400px;height:200px;border: 2px solid yellow;"> </div -->
+			  <div id="ytapiplayer"  style="width:400px;height:200px;border: 2px solid yellow;">
+				    You need Flash player 8+ and JavaScript enabled to view this video.
+			  </div>
+			  <script type="text/javascript">
+			    var params = { allowScriptAccess: "always" };
+			    var atts = { id: "myytplayer" };
+			    // http://www.youtube.com/watch?v=u1zgFlCw8Aw&feature=player_embedded
+			    
+			    swfobject.embedSWF("http://www.youtube.com/e/u1zgFlCw8Aw?enablejsapi=1&playerapiid=ytplayer",
+			                       "ytapiplayer", "425", "356", "8", null, null, params, atts);
+			  </script>
+            </div> 
     </div> 
     <div id="ft"></div> 
 </body> 
