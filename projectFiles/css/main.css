@@ -32,16 +32,17 @@ html <= body {
 	font-size: 85%;
 	margin:1.5em 0 0 -36.1em;	/* margin-top:-1em; */
 	padding: .13em 0;
+	z-index:10000;
 	border: 0px solid yellow;	
 }
 
-#dropdown label {
+.srchFld label {
 	color: #FFFFFF;
 }
 
 #headeraR {
 	float: right;
-	color: #86CDF5;
+	/*color: #86CDF5;*/
 	padding-right: 10px;
 	border: 0px solid white;
 }
