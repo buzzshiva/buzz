@@ -24,15 +24,15 @@ html <= body {
 	color: #FFFFFF;	/*#9F9F9F;*/
 	font-size: 85%;
 	padding: .23em 0;
-	border: 1px solid yellow;	
+	border: 0px solid yellow;	
 }
 
 #dropdown { 
 	float: left;
-	font-size: 75%;
-	margin:2.12em 0 0 -41.2em;	/* margin-top:-1em; */
+	font-size: 85%;
+	margin:1.5em 0 0 -36.1em;	/* margin-top:-1em; */
 	padding: .13em 0;
-	border: 1px solid yellow;	
+	border: 0px solid yellow;	
 }
 
 #dropdown label {
@@ -43,7 +43,7 @@ html <= body {
 	float: right;
 	color: #86CDF5;
 	padding-right: 10px;
-	border: 1px solid white;
+	border: 0px solid white;
 }
 
 #searchArea {
