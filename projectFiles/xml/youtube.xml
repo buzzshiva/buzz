@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+  <meta>
+    <author>Test - Youtube - Buzz</author>
+    <documentationURL>http://code.google.com/apis/youtube/2.0/reference.html</documentationURL>
+    <sampleQuery>select entry where q="jackson"</sampleQuery>
+  </meta>
+  <bindings>
+    <select itemPath="feed.entry" produces="XML">
+      <urls>
+        <url env="all">http://gdata.youtube.com/feeds/api/videos</url>
+      </urls>
+      <inputs>
+		<key id="q" type="xs:string" paramType="query" required="true" />
+        <key id="format" type="xs:string" paramType="query" default="5" />
+		<key id="max-results" type="xs:string" paramType="query" default="1" />
+		<key id="start-index" type="xs:string" paramType="query" default="1" />
+        <key id="orderby" type="xs:string" paramType="query" />        
+      </inputs>
+    </select>
+  </bindings>
+</table>
