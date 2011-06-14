@@ -1,0 +1,58 @@
+/* everything below is custom styling to demonstrate how to create a page layout using yui grid units */
+html <= body {
+	background-color: gold; /* fix background color */
+}
+#doc {
+    margin:20px auto; /* center in viewport */
+    width: 970px; /* fix page width */
+}
+ 
+/* arbitrary content styling */
+#hd, .yui3-g .content, #ft {
+    border: 1px solid #ccc;
+    height: 400px; 
+    margin-right: 10px; /* gutter between columns */
+}
+ 
+#hd, #ft {
+    height: 40px;
+    background-color: #3366FF;
+}
+
+#headeraL { 
+	float: left;
+	color: #FFFFFF;	/*#9F9F9F;*/
+	font-size: 85%;
+	padding: .23em 0;
+	border: 1px solid yellow;	
+}
+
+#dropdown { 
+	float: left;
+	font-size: 75%;
+	margin:2.12em 0 0 -41.2em;	/* margin-top:-1em; */
+	padding: .13em 0;
+	border: 1px solid yellow;	
+}
+
+#dropdown label {
+	color: #FFFFFF;
+}
+
+#headeraR {
+	float: right;
+	color: #86CDF5;
+	padding-right: 10px;
+	border: 1px solid white;
+}
+
+#searchArea {
+	z-index: 190;
+	position: relative;
+	margin-top: 1.2em;
+	/*width: 29em;*/
+	text-align: right;
+}
+
+#ac-input { width: 250px; }
+ 
