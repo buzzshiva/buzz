@@ -39,9 +39,9 @@
 		</div> 
 
     </div> 
-    <div class="yui3-g"> 
-            <div class="content">
-            <!-- div id="flashContainer" style="width:400px;height:200px;border: 2px solid yellow;"> </div -->
+	<div class="yui3-g"> 
+	        <div class="content">
+	        <!-- div id="flashContainer" style="width:400px;height:200px;border: 2px solid yellow;"> </div -->
 			  <div id="ytapiplayer"  style="width:400px;height:200px;border: 2px solid yellow;">
 				    You need Flash player 8+ and JavaScript enabled to view this video.
 			  </div>
@@ -53,8 +53,22 @@
 			    swfobject.embedSWF("http://www.youtube.com/e/u1zgFlCw8Aw?enablejsapi=1&playerapiid=ytplayer",
 			                       "ytapiplayer", "425", "356", "8", null, null, params, atts);
 			  </script>
-            </div> 
-    </div> 
-    <div id="ft"></div> 
+	        </div> 
+
+	</div> <!-- End of Content Main Div --> 
+
+    <div class="yui3-g" id="newsheadlines"> 
+    	<div class="yui3-u-1-2" id="headliner"> 
+			<div class="box-view"></div>
+				<div id="demo"> 
+				    <p>The module will be inserted here.  <em>Click the button below</em>.</p> 
+				</div>     		
+				<button id="init">Initialize Application</button> 
+    	</div>
+    </div>
+	<!--BEGIN SOURCE CODE FOR EXAMPLE =============================== --> 
+	<script type="text/javascript" src="js/myapp.js"></script>
+	
+   <div id="ft"></div> 
 </body> 
 </html>
