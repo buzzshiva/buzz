@@ -8,13 +8,13 @@ html <= body {
 }
  
 /* arbitrary content styling */
-#hd, .yui3-g .content, #ft {
+#hd, .yui3-g .content, #ft, #_menu, #_secondmenu {
     border: 1px solid #ccc;
     height: 400px; 
     margin-right: 10px; /* gutter between columns */
 }
  
-#hd, #ft {
+#hd, #ft, #_menu, #_secondmenu {
     height: 40px;
     background-color: #3366FF;
 }
